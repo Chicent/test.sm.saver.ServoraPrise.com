@@ -4,6 +4,9 @@ FROM php:8.1-apache
 # Enable Apache rewrite module
 RUN a2enmod rewrite
 
+# Set DirectoryIndex to prioritize index.php
+RUN echo "DirectoryIndex index.php index.html" > /etc/apache2/conf-enabled/docker-php.conf
+
 # Copy project files into the web root
 COPY . /var/www/html/
 
